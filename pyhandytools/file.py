@@ -1,6 +1,7 @@
 # !/usr/bin/env python3
 # _*_ coding: utf-8 _*_
 import json
+import os
 from typing import Union
 
 from loguru import logger
@@ -22,3 +23,9 @@ class FileUtils:
                 return {}
             data = json.loads(_)
         return data
+
+    @staticmethod
+    def check_dir_path(dir_path: str):
+        if not os.path.exists(dir_path):
+            os.makedirs(dir_path, exist_ok=True)
+            logger.warning(f'mkdir path: {dir_path}')
