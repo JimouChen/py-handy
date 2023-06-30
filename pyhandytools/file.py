@@ -29,3 +29,7 @@ class FileUtils:
         if not os.path.exists(dir_path):
             os.makedirs(dir_path, exist_ok=True)
             logger.warning(f'mkdir path: {dir_path}')
+
+    @staticmethod
+    def count_file_number(dir_path: str) -> int:
+        return len(os.listdir(dir_path))
