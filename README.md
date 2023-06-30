@@ -12,6 +12,7 @@ pip3 install -U pyhandytools
 ### module
 
 - file
+- env
 
 ## PYPI url
 ```https://pypi.org/project/pyhandytools/```
