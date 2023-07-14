@@ -15,4 +15,5 @@ pip3 install -U pyhandytools
 - env
 
 ## PYPI url
-```https://pypi.org/project/pyhandytools/```
+
+- ```https://pypi.org/project/pyhandytools/```
