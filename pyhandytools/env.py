@@ -6,4 +6,8 @@ import warnings
 class EnvUtils:
     @staticmethod
     def init_env():
+        """
+        to filter warning massage
+        :return:
+        """
         warnings.filterwarnings('ignore')

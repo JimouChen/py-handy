@@ -9,16 +9,21 @@ with open(path.join(path.abspath(path.dirname(__file__)), 'README.md'), encoding
 
 setup(
     name='pyhandytools',
-    version='0.0.4',
+    version='0.0.7',
     packages=find_packages(),
     include_package_data=True,
     url='https://github.com/JimouChen/py-handy',
     author='Jimou Chen',
-    author_email='neaya1024@gmail.com',
+    author_email='jmchen1024@gmail.com',
     description='Python handy tools',
     long_description=long_description,
     long_description_content_type='text/markdown',
     keywords=['toolbox', 'kit', 'utils', 'tools'],
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
     install_requires=[
         'loguru'
     ]
