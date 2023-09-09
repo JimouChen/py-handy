@@ -11,7 +11,7 @@ class FileUtils:
     @staticmethod
     def write2json(json_path: str, data: Union[list, dict], way='w'):
         """
-        write dict or list data to json file
+        write dict or list data to jsonfile
         :param json_path: json file path
         :param data: dict data or list data
         :param way: w|w+|a|a+
@@ -22,11 +22,11 @@ class FileUtils:
         logger.info(f'write json to: {json_path}')
 
     @staticmethod
-    def load_json(json_path: str) -> dict:
+    def load_json(json_path: str) -> Union[list, dict]:
         """
         load json file, only read
         :param json_path: json file path
-        :return: a dict data
+        :return: a dict or a list
         """
         with open(json_path, 'r', encoding='utf-8') as f:
             _ = f.read()
@@ -55,3 +55,13 @@ class FileUtils:
         :return: the number of files
         """
         return len(os.listdir(dir_path))
+
+    @staticmethod
+    def check_jsonfile_existed(file_path: str):
+        """
+        to check is the json file existed
+        :param file_path: json file path
+        :return:
+        """
+        if not os.path.exists(file_path):
+            FileUtils.write2json(file_path, [])
