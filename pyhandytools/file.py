@@ -65,3 +65,12 @@ class FileUtils:
         """
         if not os.path.exists(file_path):
             FileUtils.write2json(file_path, [])
+
+    @staticmethod
+    def pretty_json(data: Union[list, dict], indent: int = 4):
+        """
+        :param data: list or dict data
+        :param indent: indent
+        :return: pretty json string
+        """
+        return json.dumps(data, ensure_ascii=False, indent=indent)
