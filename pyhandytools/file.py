@@ -2,6 +2,7 @@
 # _*_ coding: utf-8 _*_
 import json
 import os
+import shutil
 from typing import Union
 
 from loguru import logger
@@ -74,3 +75,22 @@ class FileUtils:
         :return: pretty json string
         """
         return json.dumps(data, ensure_ascii=False, indent=indent)
+
+    @staticmethod
+    def cp_and_rm(old_file_path: str, new_file_path: str) -> bool:
+        """
+        copy file and remove file
+        :param old_file_path: old file path
+        :param new_file_path: new file path
+        :return: bool
+        """
+        try:
+            if os.path.exists(old_file_path):
+                shutil.copy(old_file_path, new_file_path)
+                os.remove(old_file_path)
+                return True
+            logger.warning(f'{old_file_path} is not existed!')
+            return False
+        except Exception as e:
+            logger.error(f'copy and remove file failed: {e}')
+            return False
