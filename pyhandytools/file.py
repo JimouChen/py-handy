@@ -1,5 +1,6 @@
 # !/usr/bin/env python3
 # _*_ coding: utf-8 _*_
+import base64
 import json
 import os
 import shutil
@@ -68,12 +69,15 @@ class FileUtils:
             FileUtils.write2json(file_path, [])
 
     @staticmethod
-    def pretty_json(data: Union[list, dict], indent: int = 4):
+    def pretty_json(data: Union[list, dict], indent: int = 4) -> Union[str, None]:
         """
         :param data: list or dict data
         :param indent: indent
         :return: pretty json string
         """
+        if data is None:
+            logger.warning('data is required not to be None!')
+            return None
         return json.dumps(data, ensure_ascii=False, indent=indent)
 
     @staticmethod
@@ -93,4 +97,31 @@ class FileUtils:
             return False
         except Exception as e:
             logger.error(f'copy and remove file failed: {e}')
+            return False
+
+
+class ImageUtil:
+    @staticmethod
+    def base64_encode_img(img_path: str) -> str:
+        with open(img_path, "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read()).decode("utf-8")
+
+        return encoded_string
+
+    @staticmethod
+    def base64_decode_img(encoded_string: str, save_img_path: str) -> bool:
+        """
+        decode base64 code to image.
+        :param encoded_string: base64 encoded string
+        :param save_img_path: save image path after decoding
+        :return:
+        """
+        decoded_data = base64.b64decode(encoded_string)
+        try:
+            with open(save_img_path, "wb") as new_image_file:
+                new_image_file.write(decoded_data)
+            logger.success(f'base64 decode successfully! save path: {save_img_path}')
+            return True
+        except Exception as e:
+            logger.error(f'base64 decode failed! {e}')
             return False
