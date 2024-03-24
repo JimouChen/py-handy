@@ -24,6 +24,17 @@ class FileUtils:
         logger.info(f'write json to: {json_path}')
 
     @staticmethod
+    def write2jsonl(jsonl_path: str, data: list[dict]):
+        try:
+            with open(jsonl_path, 'w', encoding='utf-8') as file:
+                # 遍历数据列表
+                for _ in data:
+                    file.write(f'{json.dumps(_)}\n')
+            logger.success(f'write jsonl to {jsonl_path} successfully!')
+        except Exception as e:
+            logger.error(f'write jsonl to {jsonl_path} failed: {e}')
+
+    @staticmethod
     def load_json(json_path: str) -> Union[list, dict]:
         """
         load json file, only read
@@ -36,6 +47,22 @@ class FileUtils:
                 logger.warning(f'Your json file in {json_path} is empty!!!')
                 return {}
             data = json.loads(_)
+        return data
+
+    @staticmethod
+    def load_jsonl(jsonl_path: str) -> list[dict]:
+        """
+        parse jsonl file
+        :param jsonl_path: jsonl file path
+        :return: [{'k': v}, {...}]
+        """
+        data = []
+        try:
+            with open(jsonl_path, 'r', encoding='utf-8') as file:
+                for line in file:
+                    data.append(json.loads(line))
+        except Exception as e:
+            logger.error(e)
         return data
 
     @staticmethod

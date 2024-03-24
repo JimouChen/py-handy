@@ -9,7 +9,7 @@ with open(path.join(path.abspath(path.dirname(__file__)), 'README.md'), encoding
 
 setup(
     name='pyhandytools',
-    version='0.1.3',
+    version='0.1.4',
     packages=find_packages(),
     include_package_data=True,
     url='https://github.com/JimouChen/py-handy',
