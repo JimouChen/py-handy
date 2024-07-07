@@ -13,6 +13,7 @@ pip3 install -U pyhandytools
 
 - file
 - env
+- logger
 
 ## PYPI url
 
