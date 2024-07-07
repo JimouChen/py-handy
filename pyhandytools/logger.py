@@ -2,6 +2,7 @@
 # _*_ coding: utf-8 _*_
 import loguru
 from loguru import logger
+from loguru._logger import Logger
 
 
 class LoggerUtils:
@@ -20,7 +21,7 @@ class LoggerUtils:
             enqueue: bool = True,
             log_format: str = None,
             version: str = None
-    ) -> loguru.Logger:
+    ) -> Logger:
         ret_logger = logger.bind(name=service_name) if service_name else logger
         log_format = log_format if log_format else cls.default_log_format
         version_prefix = f'{cls._version_prefix}{version} ' if version else ''
@@ -48,7 +49,7 @@ class LoggerUtils:
             service_name: str,
             logger_path: str,
             level: str = "DEBUG"
-    ) -> loguru.Logger:
+    ) -> Logger:
         """
         init a default config logger
         :param service_name: your log name
