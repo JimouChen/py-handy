@@ -14,6 +14,7 @@ pip3 install -U pyhandytools
 - file
 - env
 - logger
+- crypto
 
 ## PYPI url
 
