@@ -10,7 +10,7 @@ class CryptoUtils:
     """
     demo:
         key = 'your-32-bytes-key'
-        util = CryptoUtil(key)
+        util = CryptoUtils(key)
 
         plaintext = 'true_password'
         encrypted = util.encrypt(plaintext)
