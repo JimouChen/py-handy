@@ -107,7 +107,7 @@ class AsyncApiUtil:
     @classmethod
     async def req_get(cls, url: str, params: dict = None, workers: int = None, headers: dict = None):
         """
-        异步协程post请求
+        异步协程get请求
         :param url:  请求的url
         :param params: 拼接在url后面的参数
         :param workers: 限制并发数
