@@ -86,7 +86,7 @@ class FileUtils:
         return len(os.listdir(dir_path))
 
     @staticmethod
-    def check_jsonfile_existed(file_path: str):
+    def check_jsonfile_existed_and_mkdir(file_path: str):
         """
         to check is the json file existed
         :param file_path: json file path
