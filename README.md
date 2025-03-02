@@ -17,6 +17,7 @@ pip3 install -U pyhandytools
 - crypto
 - calc
 - req
+- cleaner
 
 ## PYPI url
 
